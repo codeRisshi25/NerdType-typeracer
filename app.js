@@ -31,6 +31,26 @@ mongoose
 
 // Socket.io connection
 io.on("connection", (socket) => {
+    // handles the join game event
+    socket.on("join-game", async ({ gameID: _id, nickName }) => {
+      try {
+        let game =await Game.findById(_id);
+        if (game.isOpen) {
+          const gameID = game._id.toString();
+          socket.join(gameID);
+          let player = {
+            socketID: socket.id,
+            nickName 
+          };
+          game.players.push(player);
+          game = await game.save();
+          io.to(gameID).emit("updateGame",game);
+        } else console.log("game not found");
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  // handles the create game event
   socket.on("create-game", async (nickName) => {
     try {
       let apiText = await randomTextApi.getData();
@@ -50,10 +70,6 @@ io.on("connection", (socket) => {
     } catch (err) {
       console.log(err);
     }
-  });
-
-  socket.on("disconnect", () => {
-    console.log("User disconnected");
   });
 });
 
