@@ -39,17 +39,17 @@ io.on("connection", (socket) => {
     let player = game.players.id(playerID);
     if (player.isPartyLeader) {
       let timerID = setInterval(async () => {
-        if(countDown >= 0){
+        if (countDown >= 0) {
           io.to(gameID).emit("timer", { countDown, msg: "Starting Game.." });
           countDown--;
         } else {
           game.isOpen = false;
           game = await game.save();
           io.to(gameID).emit("updateGame", game);
-          // startGameCLock(gameID);
-          clearInterval(timerID); 
+          startGameClock(gameID);
+          clearInterval(timerID);
         }
-      },1000);
+      }, 1000);
     } else {
       // Optionally, handle the case where player is null or not the party leader
       console.error("Player not found or is not the party leader");
@@ -97,6 +97,50 @@ io.on("connection", (socket) => {
   });
 });
 
+startGameClock = async (gameID) => {
+  let game = await Game.findById(gameID);
+  game.startTime = new Date().getTime();
+  game = await game.save();
+  let time = 5;
+  let timerID = setInterval(function gameIntervalFunc() {
+    if (time >= 0) {
+      const formatTime = calculateTime(time);
+      io.to(gameID).emit("timer", {
+        countDown: formatTime,
+        msg: "Time Remaining",
+      });
+      time--;
+      return gameIntervalFunc;
+    } else {
+      (async () => {
+        let endTime = new Date().getTime();
+        let game = await Game.findById(gameID);
+        let { startTime } = game;
+        game.isOver = true;
+        game.players.forEach((player, index) => {
+          if (player.WMP === -1) {
+            game.players[index].WPM = calculateWPM(startTime, endTime, player);
+          }
+        });
+        game = await game.save();
+        io.to(gameID).emit("updateGame", game);
+        clearInterval(timerID);
+      })();
+    }
+  }, 1000);
+};
+const calculateTime = (time) => {
+  let minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+  return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+};
+const calculateWPM = (startTime, endTime, player) => {
+  let numOfWords = player.currentWordIndex;
+  const timeInSeconds = (endTime - startTime) / 1000;
+  const minutes = timeInSeconds / 60;
+  const wpm = Math.floor(numOfWords / minutes);
+  return wpm;
+};
 // Start the server
 const PORT = 3001;
 server.listen(PORT, () => {
