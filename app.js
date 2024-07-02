@@ -31,25 +31,49 @@ mongoose
 
 // Socket.io connection
 io.on("connection", (socket) => {
-    // handles the join game event
-    socket.on("join-game", async ({ gameID: _id, nickName }) => {
-      try {
-        let game =await Game.findById(_id);
-        if (game.isOpen) {
-          const gameID = game._id.toString();
-          socket.join(gameID);
-          let player = {
-            socketID: socket.id,
-            nickName 
-          };
-          game.players.push(player);
+  // handles the timer event
+  socket.on("timer", async ({ playerID, gameID }) => {
+    socket.emit(playerID);
+    let countDown = 5;
+    let game = await Game.findById(gameID);
+    let player = game.players.id(playerID);
+    if (player.isPartyLeader) {
+      let timerID = setInterval(async () => {
+        if(countDown >= 0){
+          io.to(gameID).emit("timer", { countDown, msg: "Starting Game.." });
+          countDown--;
+        } else {
+          game.isOpen = false;
           game = await game.save();
-          io.to(gameID).emit("updateGame",game);
-        } else console.log("game not found");
-      } catch (err) {
-        console.log(err);
-      }
-    });
+          io.to(gameID).emit("updateGame", game);
+          // startGameCLock(gameID);
+          clearInterval(timerID); 
+        }
+      },1000);
+    } else {
+      // Optionally, handle the case where player is null or not the party leader
+      console.error("Player not found or is not the party leader");
+    }
+  });
+  // handles the join game event
+  socket.on("join-game", async ({ gameID: _id, nickName }) => {
+    try {
+      let game = await Game.findById(_id);
+      if (game.isOpen) {
+        const gameID = game._id.toString();
+        socket.join(gameID);
+        let player = {
+          socketID: socket.id,
+          nickName,
+        };
+        game.players.push(player);
+        game = await game.save();
+        io.to(gameID).emit("updateGame", game);
+      } else console.log("game not found");
+    } catch (err) {
+      console.log(err);
+    }
+  });
   // handles the create game event
   socket.on("create-game", async (nickName) => {
     try {
