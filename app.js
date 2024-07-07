@@ -48,7 +48,7 @@ io.on("connection", (socket) => {
           io.to(gameID).emit("updateGame", game);
           startGameClock(gameID);
           clearInterval(timerID);
-        }
+        }index
       }, 1000);
     } else {
       // Optionally, handle the case where player is null or not the party leader
