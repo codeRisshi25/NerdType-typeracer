@@ -31,6 +31,35 @@ mongoose
 
 // Socket.io connection
 io.on("connection", (socket) => {
+  socket.on('userInput', async({userInput,gameID})=>{
+    console.log(userInput,gameID)
+    try {
+      let game = await Game.findById(gameID);
+      console.log(game,game.isOpen);
+      if (!game.isOpen && !game.isOver){
+        let player = game.players.find(player => player.socketID === socket.id);
+        let word = game.words[player.currentWordIndex];
+        if (word === userInput){
+          player.currentWordIndex++;
+          if (player.currentWordIndex !== game.words.length){
+            game = await game.save();
+            io.to(gameID).emit('updateGame',game);
+          }
+          else {
+            let endTime = new Date().getTime();
+            let {startTime} = game;
+            player.WPM = calculateWPM(endTime,startTime,player);
+            game = await game.save();
+            socket.emit('done');
+            io.to(gameID).emit('updateGame',game);
+          }
+        }
+      }
+    } catch(err){
+      console.log("Game na milra bencho "+err)
+    }
+  })
+
   // handles the timer event
   socket.on("timer", async ({ playerID, gameID }) => {
     socket.emit(playerID);
@@ -48,7 +77,7 @@ io.on("connection", (socket) => {
           io.to(gameID).emit("updateGame", game);
           startGameClock(gameID);
           clearInterval(timerID);
-        }index
+        }
       }, 1000);
     } else {
       // Optionally, handle the case where player is null or not the party leader
@@ -141,6 +170,7 @@ const calculateWPM = (startTime, endTime, player) => {
   const wpm = Math.floor(numOfWords / minutes);
   return wpm;
 };
+
 // Start the server
 const PORT = 3001;
 server.listen(PORT, () => {
