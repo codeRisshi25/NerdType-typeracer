@@ -32,10 +32,8 @@ mongoose
 // Socket.io connection
 io.on("connection", (socket) => {
   socket.on('userInput', async({userInput,gameID})=>{
-    console.log(userInput,gameID)
     try {
       let game = await Game.findById(gameID);
-      console.log(game,game.isOpen);
       if (!game.isOpen && !game.isOver){
         let player = game.players.find(player => player.socketID === socket.id);
         let word = game.words[player.currentWordIndex];
@@ -56,14 +54,14 @@ io.on("connection", (socket) => {
         }
       }
     } catch(err){
-      console.log("Game na milra bencho "+err)
+      console.log("USER INPUT ERROR :- "+err)
     }
   })
 
   // handles the timer event
   socket.on("timer", async ({ playerID, gameID }) => {
     socket.emit(playerID);
-    let countDown = 5;
+    let countDown = 5;  // This is the countdown time
     let game = await Game.findById(gameID);
     let player = game.players.id(playerID);
     if (player.isPartyLeader) {
@@ -106,7 +104,8 @@ io.on("connection", (socket) => {
   // handles the create game event
   socket.on("create-game", async (nickName) => {
     try {
-      let apiText = await randomTextApi.getData();
+      let apiText = await randomTextApi.getData();  // Gets the api data here
+      // Possiblity to set the number for words
       let game = new Game();
       game.words = apiText;
       let player = {
@@ -130,7 +129,7 @@ startGameClock = async (gameID) => {
   let game = await Game.findById(gameID);
   game.startTime = new Date().getTime();
   game = await game.save();
-  let time = 5;
+  let time = 15; // This is the time for the actual racer
   let timerID = setInterval(function gameIntervalFunc() {
     if (time >= 0) {
       const formatTime = calculateTime(time);
