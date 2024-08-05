@@ -31,6 +31,7 @@ mongoose
 
 // Socket.io connection
 io.on("connection", (socket) => {
+  // handles the userInput event
   socket.on('userInput', async({userInput,gameID})=>{
     try {
       let game = await Game.findById(gameID);
@@ -129,7 +130,7 @@ startGameClock = async (gameID) => {
   let game = await Game.findById(gameID);
   game.startTime = new Date().getTime();
   game = await game.save();
-  let time = 15; // This is the time for the actual racer
+  let time = 30 // This is the time for the actual racer
   let timerID = setInterval(function gameIntervalFunc() {
     if (time >= 0) {
       const formatTime = calculateTime(time);
@@ -146,7 +147,7 @@ startGameClock = async (gameID) => {
         let { startTime } = game;
         game.isOver = true;
         game.players.forEach((player, index) => {
-          if (player.WMP === -1) {
+          if (player.WPM === -1) {  // fucking wrote WMP instead of WPM and lost my mind
             game.players[index].WPM = calculateWPM(startTime, endTime, player);
           }
         });
