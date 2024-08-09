@@ -38,6 +38,7 @@ io.on("connection", (socket) => {
       if (!game.isOpen && !game.isOver){
         let player = game.players.find(player => player.socketID === socket.id);
         let word = game.words[player.currentWordIndex];
+        let gameWords = game.words;
         if (word === userInput){
           player.currentWordIndex++;
           if (player.currentWordIndex !== game.words.length){
@@ -47,7 +48,7 @@ io.on("connection", (socket) => {
           else {
             let endTime = new Date().getTime();
             let {startTime} = game;
-            player.WPM = calculateWPM(endTime,startTime,player);
+            player.WPM = calculateWPM(endTime,startTime,player,gameWords);
             game = await game.save();
             socket.emit('done');
             io.to(gameID).emit('updateGame',game);
@@ -130,7 +131,7 @@ startGameClock = async (gameID) => {
   let game = await Game.findById(gameID);
   game.startTime = new Date().getTime();
   game = await game.save();
-  let time = 30 // This is the time for the actual racer
+  let time = 10 // This is the time for the actual racer
   let timerID = setInterval(function gameIntervalFunc() {
     if (time >= 0) {
       const formatTime = calculateTime(time);
@@ -144,11 +145,12 @@ startGameClock = async (gameID) => {
       (async () => {
         let endTime = new Date().getTime();
         let game = await Game.findById(gameID);
+        let totalWords = game.words;
         let { startTime } = game;
         game.isOver = true;
         game.players.forEach((player, index) => {
           if (player.WPM === -1) {  // fucking wrote WMP instead of WPM and lost my mind
-            game.players[index].WPM = calculateWPM(startTime, endTime, player);
+            game.players[index].WPM = calculateWPM(startTime, endTime, player, totalWords);
           }
         });
         game = await game.save();
@@ -163,11 +165,13 @@ const calculateTime = (time) => {
   let seconds = time % 60;
   return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
 };
-const calculateWPM = (startTime, endTime, player) => {
+const calculateWPM = (startTime, endTime, player,totalWords) => {
   let numOfWords = player.currentWordIndex;
+  let wordsTyped = totalWords.slice(0,numOfWords+1);
+  let totalCharacters = wordsTyped.reduce((sum, str) => sum + str.length, 0);
   const timeInSeconds = (endTime - startTime) / 1000;
   const minutes = timeInSeconds / 60;
-  const wpm = Math.floor(numOfWords / minutes);
+  const wpm = Math.floor((totalCharacters/5) / minutes);
   return wpm;
 };
 
