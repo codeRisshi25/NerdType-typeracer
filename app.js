@@ -10,7 +10,16 @@ const Game = require("./Models/Game");
 const randomTextApi = require("./randomTextApi");
 
 // CORS setup
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || origin.startsWith("http://localhost:3000") || origin.startsWith("http://10.55.")) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST"],
+}));
 
 // Create HTTP server
 const server = http.createServer(app);
@@ -18,14 +27,19 @@ const server = http.createServer(app);
 // Set up Socket.io with CORS
 const io = socketio(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: (origin, callback) => {
+      if (!origin || origin.startsWith("http://localhost:3000") || origin.startsWith("http://10.55.")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
   },
 });
-
 // MongoDB connection
 mongoose
-  .connect("mongodb://localhost:27017/typeracerDB")
+  .connect("mongodb://127.0.0.1:27017/typeracerDB") // Replace with your MongoDB server IP
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.error(err));
 
@@ -177,6 +191,6 @@ const calculateWPM = (startTime, endTime, player,totalWords) => {
 
 // Start the server
 const PORT = 3001;
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
