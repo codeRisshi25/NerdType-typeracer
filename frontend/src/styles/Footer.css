@@ -1,0 +1,83 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(31, 57, 64, 0.8);
+    backdrop-filter: blur(5px);
+    color: white;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: 50px 50px 0 0;
+    z-index: 100;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-text {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .footer-link {
+    color: #6BDE3B;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .footer-copyright {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+  
+  /* Add margin to ensure content isn't hidden behind footer */
+  main {
+    margin-bottom: 60px;
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      padding: 0.5rem 1rem;
+    }
+    
+    .footer-content {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer {
+      border-radius: 25px 25px 0 0;
+    }
+    
+    main {
+      margin-bottom: 70px;
+    }
+  }
+  
+  /* Make footer relative when there's not enough space or in landscape */
+  @media (max-height: 500px) {
+    .footer {
+      position: relative;
+      border-radius: 0;
+    }
+    
+    main {
+      margin-bottom: 0;
+    }
+  }

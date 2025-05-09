@@ -1,0 +1,119 @@
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blur-screen {
+    min-height: 100vh;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .wrapper-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .form-card {
+    background: rgba(31, 57, 64, 0.85);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-title {
+    color: #6BDE3B;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-label {
+    display: block;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .form-control:focus {
+    border-color: #6BDE3B;
+    box-shadow: 0 0 0 2px rgba(107, 222, 59, 0.25);
+    outline: none;
+  }
+  
+  .btn-full {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .form-card {
+      padding: 1.5rem;
+    }
+    
+    .form-title {
+      font-size: 1.75rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .wrapper-main {
+      padding: 1rem;
+    }
+    
+    .form-card {
+      padding: 1.25rem;
+    }
+    
+    .form-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }

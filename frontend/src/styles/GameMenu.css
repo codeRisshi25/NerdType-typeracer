@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+.body-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.body-content-text {
+  max-width: 50rem;
+  font-size: 2.1875rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.3;
+  opacity: 0.8;
+  margin: 2.56rem 2rem;
+}
+
+.selection-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.btn-main {
+  font-size: 1.5rem;
+  font-family: 'Roboto Mono', monospace;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  background: #114a56;
+  border: none;
+  color: white;
+  max-width: 200px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.btn-main:hover {
+  background: #0c3f4a;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-main:active {
+  background: #0a333e;
+  transform: translateY(-1px);
+}
+
+.button-wrapper {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(31, 57, 64, 0.68);
+  box-shadow: 0px 2px 4px 0px rgba(243, 243, 243, 0);
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-content {
+  font-size: 1.5625rem;
+  font-style: normal;
+  text-align: center;
+  font-weight: 300;
+  line-height: normal;
+  opacity: 0.8;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .body-content {
+    flex-direction: column;
+  }
+  
+  .body-content-text {
+    font-size: 1.875rem;
+    margin: 1.5rem 1rem;
+    text-align: center;
+  }
+  
+  .selection-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .button-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .button-content {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .body-content-text {
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .button-wrapper {
+    padding: 1rem;
+  }
+  
+  .button-content {
+    font-size: 1rem;
+  }
+  
+  .btn-main {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

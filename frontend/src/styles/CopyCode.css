@@ -1,0 +1,106 @@
+.copy-code-wrapper {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(31, 57, 64, 0.9);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 1rem;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .copy-code-wrapper h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .copy-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .copy-section p {
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: #6BDE3B;
+    font-family: 'Roboto Mono', monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
+  
+  .copy-section button {
+    padding: 0.5rem 1rem;
+    background-color: #114a56;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .copy-section button:hover {
+    background-color: #6BDE3B;
+    color: #1F3940;
+  }
+  
+  /* Success message animation */
+  .copy-success {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(107, 222, 59, 0.9);
+    color: #1F3940;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    animation: fadeOut 2s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @media (max-width: 768px) {
+    .copy-code-wrapper {
+      padding: 1rem;
+      margin: 1.5rem auto;
+    }
+    
+    .copy-section {
+      flex-direction: column;
+      padding: 0.5rem;
+    }
+    
+    .copy-section p {
+      width: 100%;
+      text-align: center;
+      word-break: break-all;
+      font-size: 1rem;
+    }
+    
+    .copy-section button {
+      width: 100%;
+    }
+  }

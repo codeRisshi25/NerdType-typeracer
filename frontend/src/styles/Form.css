@@ -1,0 +1,53 @@
+.form-container {
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+  
+  .words-form {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    font-family: 'Roboto Mono', monospace;
+    transition: all 0.3s ease;
+  }
+  
+  .words-form:focus {
+    outline: none;
+    border-color: #6BDE3B;
+    box-shadow: 0 0 0 3px rgba(107, 222, 59, 0.25);
+  }
+  
+  .words-form::placeholder {
+    color: #666;
+    opacity: 0.7;
+  }
+  
+  .words-form:disabled {
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: not-allowed;
+  }
+  
+  .form-status {
+    margin-top: 0.75rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    animation: fadeIn 0.5s;
+  }
+  
+  @media (max-width: 768px) {
+    .words-form {
+      padding: 0.875rem 1rem;
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .words-form {
+      padding: 0.75rem 0.875rem;
+      font-size: 1rem;
+    }
+  }

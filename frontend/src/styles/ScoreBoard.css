@@ -1,0 +1,86 @@
+.score-table-container {
+    margin: 2rem 0;
+  }
+  
+  .score-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .score-table thead {
+    background-color: rgba(107, 222, 59, 0.2);
+  }
+  
+  .score-table th {
+    color: #6BDE3B;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+  }
+  
+  .score-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .score-table tbody tr {
+    background-color: rgba(31, 57, 64, 0.6);
+    transition: background-color 0.3s ease;
+  }
+  
+  .score-table tbody tr:hover {
+    background-color: rgba(31, 57, 64, 0.8);
+  }
+  
+  .score-table tbody tr:nth-child(even) {
+    background-color: rgba(31, 57, 64, 0.7);
+  }
+  
+  .score-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .winner {
+    color: #6BDE3B;
+    font-weight: 600;
+  }
+  
+  .score-wpm {
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  .score-title {
+    color: #6BDE3B;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .score-table th,
+    .score-table td {
+      padding: 0.75rem;
+    }
+    
+    .score-title {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .score-table th,
+    .score-table td {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .score-title {
+      font-size: 1.2rem;
+    }
+  }

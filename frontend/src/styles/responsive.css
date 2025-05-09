@@ -1,0 +1,165 @@
+/* Mobile-first responsive design */
+:root {
+    --primary-color: #6BDE3B;
+    --primary-dark: #59c129;
+    --bg-dark: rgba(31, 57, 64, 0.68);
+    --bg-darker: rgba(31, 57, 64, 0.85);
+    --text-light: #ffffff;
+    --text-muted: #cccccc;
+    --border-radius: 0.5rem;
+    --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+    --container-width: 1200px;
+  }
+  
+  /* Responsive container */
+  .container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Responsive typography scaling */
+  html {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  /* Flex containers */
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .flex-grow {
+    flex-grow: 1;
+  }
+  
+  /* Responsive spacing */
+  .m-1 { margin: 0.5rem; }
+  .m-2 { margin: 1rem; }
+  .m-3 { margin: 1.5rem; }
+  .m-4 { margin: 2rem; }
+  
+  .mx-1 { margin-left: 0.5rem; margin-right: 0.5rem; }
+  .mx-2 { margin-left: 1rem; margin-right: 1rem; }
+  .mx-3 { margin-left: 1.5rem; margin-right: 1.5rem; }
+  .mx-4 { margin-left: 2rem; margin-right: 2rem; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  
+  .my-1 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+  .my-2 { margin-top: 1rem; margin-bottom: 1rem; }
+  .my-3 { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+  .my-4 { margin-top: 2rem; margin-bottom: 2rem; }
+  
+  .p-1 { padding: 0.5rem; }
+  .p-2 { padding: 1rem; }
+  .p-3 { padding: 1.5rem; }
+  .p-4 { padding: 2rem; }
+  
+  .px-1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .px-2 { padding-left: 1rem; padding-right: 1rem; }
+  .px-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .px-4 { padding-left: 2rem; padding-right: 2rem; }
+  
+  .py-1 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+  .py-3 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .py-4 { padding-top: 2rem; padding-bottom: 2rem; }
+  
+  /* Text alignment */
+  .text-center { text-align: center; }
+  .text-left { text-align: left; }
+  .text-right { text-align: right; }
+  
+  /* General animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  /* Button styles */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: #1F3940;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-full {
+    width: 100%;
+  }
+  
+  /* Card component */
+  .card {
+    background: var(--bg-darker);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }

@@ -1,0 +1,67 @@
+.words-display {
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(31, 57, 64, 0.8);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+    margin: 1.5rem 0;
+    border-radius: 0.75rem;
+    text-align: left;
+    line-height: 1.7;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(107, 222, 59, 0.1);
+  }
+  
+  .words-display:hover {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(31, 57, 64, 0.85);
+  }
+  
+  .typed-text {
+    color: #6BDE3B;
+    font-weight: bold;
+  }
+  
+  .current-word {
+    color: white;
+    font-weight: bold;
+    font-size: 1.45rem;
+    position: relative;
+    padding: 0 2px;
+    border-bottom: 2px solid #6BDE3B;
+    animation: blink 1s infinite;
+  }
+  
+  .remaining-text {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  @keyframes blink {
+    0%, 100% { border-color: #6BDE3B; }
+    50% { border-color: transparent; }
+  }
+  
+  @media (max-width: 768px) {
+    .words-display {
+      padding: 1.25rem;
+      font-size: 1.2rem;
+      margin: 1.25rem 0;
+    }
+    
+    .current-word {
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .words-display {
+      padding: 1rem;
+      font-size: 1rem;
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+    
+    .current-word {
+      font-size: 1.05rem;
+    }
+  }
