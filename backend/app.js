@@ -4,6 +4,7 @@ const http = require("http");
 const socketio = require("socket.io");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require('dotenv').config();
 
 // Models
 const Game = require("./Models/Game");
@@ -25,7 +26,7 @@ const io = socketio(server, {
 
 // MongoDB connection
 mongoose
-  .connect("mongodb+srv://admin:ZziVRddQmGt4JCCs@appdata.vwsokfm.mongodb.net/?retryWrites=true&w=majority&appName=appdata")
+  .connect(process.env.MONGO_CONN_STRING)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.error(err));
 
