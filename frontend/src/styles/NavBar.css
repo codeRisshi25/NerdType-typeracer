@@ -2,7 +2,6 @@
     background-color: rgba(31, 57, 64, 0.68);
     backdrop-filter: blur(10px);
     border-radius: 50px;
-    margin: 1rem;
     position: sticky;
     top: 1rem;
     z-index: 100;
@@ -94,15 +93,10 @@
       width: 100%;
       flex-direction: column;
       text-align: center;
-      margin-top: 1rem;
     }
     
     .nav-right.active {
       display: flex;
-    }
-    
-    .github-link {
-      margin-top: 1rem;
     }
     
     .menu-toggle.active .bar:nth-child(1) {
@@ -120,7 +114,6 @@
   
   @media (max-width: 480px) {
     .nav-bg {
-      margin: 0.5rem;
       border-radius: 25px;
     }
     

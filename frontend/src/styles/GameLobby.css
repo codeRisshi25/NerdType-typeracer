@@ -5,8 +5,8 @@
   }
   
   .blur-screen {
-    min-height: 100vh;
-    width: 100%;
+    min-height: 100dvh;
+    width: 100vh;
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.5);
   }
@@ -14,7 +14,6 @@
   .wrapper-main {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
