@@ -1,5 +1,8 @@
 # NerdType | Multiplayer Typeracer
 
+<img width="1912" height="968" alt="image" src="https://github.com/user-attachments/assets/3c9bc7c6-8acd-4303-bd9a-362872bf1b65" />
+
+
 NerdType is a real-time multiplayer typing race game built with the **MERN** stack and **Socket.io**. It features a modern, clean, dark-terminal aesthetic inspired by Monkeytype.
 
 ## Features
