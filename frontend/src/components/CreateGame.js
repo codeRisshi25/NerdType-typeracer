@@ -1,56 +1,50 @@
-import React, { useState } from "react";
-import NavBar from "./NavBar";
-import Loader from "./Loader";
-import Footer from "./Footer";
-import socket from "../socketConfig";
-import "../styles/GameLobby.css";
+import React, { useState } from 'react';
+import NavBar from './NavBar';
+import Loader from './Loader';
+import Footer from './Footer';
+import socket from '../socketConfig';
+import '../styles/GameLobby.css';
 
-const CreateGame = (props) => {
-  const [nickName, setNickName] = useState("");
+const CreateGame = () => {
+  const [nickName, setNickName] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const onChange = (e) => {
-    setNickName(e.target.value);
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    socket.emit("create-game", nickName);
+    socket.emit('create-game', nickName);
   };
 
   return (
-    <>
-      <div className="blur-screen">
-        <NavBar />
-        <div className="wrapper-main">
-          <div className="form-wrapper">
-            <h1 className="join-game">create game</h1>
-            <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <label htmlFor="nickName">Enter Nick Name</label>
-                <input
-                  type="text"
-                  name="nickName"
-                  value={nickName}
-                  onChange={onChange}
-                  placeholder="Nick Name"
-                  className="form-control"
-                  required
-                />
-              </div>
-              {loading ? (
-              <Loader /> // Render loader if loading is true
+    <div className="page-container">
+      <NavBar />
+      <main className="lobby-main">
+        <div className="lobby-card">
+          <h1 className="lobby-title">create game</h1>
+          <form onSubmit={onSubmit}>
+            <div className="field">
+              <label htmlFor="nickName">nickname</label>
+              <input
+                id="nickName"
+                type="text"
+                value={nickName}
+                onChange={(e) => setNickName(e.target.value)}
+                placeholder="your name"
+                required
+                autoComplete="off"
+              />
+            </div>
+            {loading ? (
+              <div className="loader-wrap"><Loader /></div>
             ) : (
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>)}
-            </form>
-          </div>
-          <Footer />
+              <button type="submit" className="submit-btn">create</button>
+            )}
+          </form>
         </div>
-      </div>
-    </>
+      </main>
+      <Footer />
+    </div>
   );
 };
+
 export default CreateGame;

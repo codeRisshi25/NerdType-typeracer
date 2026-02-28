@@ -1,31 +1,44 @@
-# TypeRacer Project
+# NerdType | Multiplayer Typeracer
 
-A real-time multiplayer typing game where players compete to type text as quickly and accurately as possible.
-
-## Project Overview
-
-This TypeRacer clone is a full-stack application built with:
-
-- **Frontend**: React.js
-- **Backend**: Node.js, Express
-- **Real-time Communication**: Socket.IO
-- **Database**: MongoDB
-
-Players can create games, invite others by sharing a code, and compete to see who can type the fastest.
+NerdType is a real-time multiplayer typing race game built with the **MERN** stack and **Socket.io**. It features a modern, clean, dark-terminal aesthetic inspired by Monkeytype.
 
 ## Features
+- Real-time multiplayer racing against friends with instant WPM syncing
+- Dynamic visual feedback (glowing text, glassmorphism cards, CSS gradient background)
+- Accurate WPM calculation and leaderboards per match
+- Mobile-responsive layout
 
-- Create and join multiplayer typing games
-- Real-time progress tracking
-- Shareable game codes
-- WPM (Words Per Minute) calculation
-- Countdown timer and game clock
-- Leaderboard displaying final results
+## Stack
+- **Frontend:** React, React Router, CSS Variables (Custom dark theme)
+- **Backend:** Node.js, Express, Socket.io
+- **Database:** MongoDB
 
-## License
+## How to Run Locally
 
-This project is licensed under the ISC License
+### 1. Using Docker Compose (Recommended)
+You can run the entire stack (Database, Backend API, Frontend React app) using a single command:
+```bash
+docker-compose up --build
+```
+The app will be available at `http://localhost:3000`.
 
-## Contributing
+### 2. Manual Setup
+Make sure you have MongoDB running locally or on a cloud provider.
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+**Backend Setup:**
+```bash
+cd backend
+cp .env.example .env  # Edit .env with your MongoDB URI if needed
+npm install
+npm run dev
+```
+
+**Frontend Setup:**
+```bash
+cd frontend
+npm install
+npm start
+```
+
+## Credits
+UI/UX overhauled with a modern dark terminal aesthetic, using JetBrains Mono and Inter fonts.

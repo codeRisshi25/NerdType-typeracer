@@ -9,15 +9,12 @@
     --border-radius: 0.5rem;
     --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     --transition: all 0.3s ease;
-    --container-width: 1200px;
   }
   
   /* Responsive container */
   .container {
     width: 100%;
-    max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 1rem;
   }
   
   /* Responsive typography scaling */

@@ -1,45 +1,24 @@
 .countdown-container {
-    text-align: center;
-    margin: 1.5rem 0;
-  }
-  
-  .countdown {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #6BDE3B;
-    margin: 0;
-    animation: pulse 1s infinite;
-  }
-  
-  .countdown-message {
-    font-size: 1.2rem;
-    color: white;
-    margin-top: 0.5rem;
-    opacity: 0.8;
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  
-  @media (max-width: 768px) {
-    .countdown {
-      font-size: 2rem;
-    }
-    
-    .countdown-message {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .countdown {
-      font-size: 1.75rem;
-    }
-    
-    .countdown-message {
-      font-size: 1rem;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  min-height: 80px;
+}
+
+.countdown {
+  font-family: var(--mono);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(226, 183, 20, 0.4);
+}
+
+.countdown-message {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  letter-spacing: 1px;
+}

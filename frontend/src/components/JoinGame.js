@@ -1,97 +1,79 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
-import socket from "../socketConfig";
-import "../styles/GameLobby.css";
-import Loader from "./Loader";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import socket from '../socketConfig';
+import Loader from './Loader';
+import '../styles/GameLobby.css';
 
 const JoinGame = () => {
-  const [userInput, setUserInput] = useState({ gameID: "", nickName: "" });
+  const [userInput, setUserInput] = useState({ gameID: '', nickName: '' });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const onChange = (e) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
-    if (error) setError("");
+    if (error) setError('');
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    socket.emit("join-game", userInput);
+    socket.emit('join-game', userInput);
   };
 
   useEffect(() => {
-    socket.on("error", (error) => {
-      setError(error);
+    socket.on('error', (err) => {
+      setError(err);
       setLoading(false);
     });
-
-    socket.on("game-joined", (gameState) => {
-      navigate(`/game/${gameState._id}`);
-    });
-
-    return () => {
-      socket.off("error");
-      socket.off("game-joined");
-    };
+    return () => socket.off('error');
   }, [navigate]);
 
   return (
     <div className="page-container">
-      <div className="blur-screen">
-        <NavBar />
-        <div className="wrapper-main">
-          <div className="form-card">
-            <h1 className="form-title">join game</h1>
-            <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <label htmlFor="gameID" className="form-label">Game ID</label>
-                <input
-                  type="text"
-                  name="gameID"
-                  id="gameID"
-                  value={userInput.gameID}
-                  onChange={onChange}
-                  placeholder="Enter Game ID"
-                  className="form-control"
-                  required
-                  autoComplete="off"
-                />
-                
-                <label htmlFor="nickName" className="form-label">Nick Name</label>
-                <input
-                  type="text"
-                  name="nickName"
-                  id="nickName"
-                  value={userInput.nickName}
-                  onChange={onChange}
-                  placeholder="Choose a nickname"
-                  className="form-control"
-                  required
-                  autoComplete="off"
-                />
-              </div>
-              
-              {error && <div className="error-message">{error}</div>}
-              
-              {loading ? (
-                <div className="loader-container">
-                  <Loader />
-                </div>
-              ) : (
-                <button type="submit" className="btn btn-primary btn-full">
-                  Join Game
-                </button>
-              )}
-            </form>
-          </div>
-          <div className="flex-grow"></div>
-          <Footer />
+      <NavBar />
+      <main className="lobby-main">
+        <div className="lobby-card">
+          <h1 className="lobby-title">join game</h1>
+          <form onSubmit={onSubmit}>
+            <div className="field">
+              <label htmlFor="gameID">game id</label>
+              <input
+                id="gameID"
+                type="text"
+                name="gameID"
+                value={userInput.gameID}
+                onChange={onChange}
+                placeholder="paste game id"
+                required
+                autoComplete="off"
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="nickName">nickname</label>
+              <input
+                id="nickName"
+                type="text"
+                name="nickName"
+                value={userInput.nickName}
+                onChange={onChange}
+                placeholder="your name"
+                required
+                autoComplete="off"
+              />
+            </div>
+            {error && <p className="error-msg">{error}</p>}
+            {loading ? (
+              <div className="loader-wrap"><Loader /></div>
+            ) : (
+              <button type="submit" className="submit-btn">join</button>
+            )}
+          </form>
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 };

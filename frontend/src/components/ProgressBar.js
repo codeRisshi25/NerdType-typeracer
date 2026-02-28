@@ -1,56 +1,37 @@
-import React from "react";
-import "../styles/ProgressBarComponent.css";
+import React from 'react';
+import '../styles/ProgressBarComponent.css';
 
 const calculatePercentage = (player, wordsLength) => {
-  if (player.currentWordIndex !== 0) {
-    return ((player.currentWordIndex / wordsLength) * 100).toFixed(2) + "%";
-  }
-  return "0%";
+  if (!player || !wordsLength) return 0;
+  return ((player.currentWordIndex / wordsLength) * 100).toFixed(1);
 };
 
 const ProgressBar = ({ player, players, wordsLength }) => {
-  const percentage = calculatePercentage(player, wordsLength);
+  if (!player) return null;
 
   return (
     <div className="progress-container">
-      <div className="prog-wrap current-player">
-        <h5 className="player-nickname">{player.nickName} (You)</h5>
-        <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: percentage }}
-            aria-valuenow={parseFloat(percentage)}
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            {percentage}
-          </div>
-        </div>
-      </div>
-
-      {players.map((playerObj) => {
-        if (playerObj._id !== player._id) {
-          const percentage = calculatePercentage(playerObj, wordsLength);
-          return (
-            <div className="prog-wrap" key={playerObj._id}>
-              <h5 className="player-nickname">{playerObj.nickName}</h5>
-              <div className="progress">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: percentage }}
-                  aria-valuenow={parseFloat(percentage)}
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                >
-                  {percentage}
-                </div>
-              </div>
+      {players.map((p) => {
+        const pct = calculatePercentage(p, wordsLength);
+        const isMe = p._id === player._id;
+        return (
+          <div className={`prog-wrap ${isMe ? 'current-player' : ''}`} key={p._id}>
+            <div className="prog-label">
+              <span className="player-nickname">{p.nickName}{isMe ? ' (you)' : ''}</span>
+              <span className="prog-pct">{pct}%</span>
             </div>
-          );
-        }
-        return null;
+            <div className="progress">
+              <div
+                className="progress-bar"
+                role="progressbar"
+                style={{ width: `${pct}%` }}
+                aria-valuenow={parseFloat(pct)}
+                aria-valuemin="0"
+                aria-valuemax="100"
+              />
+            </div>
+          </div>
+        );
       })}
     </div>
   );
