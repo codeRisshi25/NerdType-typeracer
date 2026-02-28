@@ -18,14 +18,18 @@ const DisplayWords = ({ words, player, userInput = '' }) => {
       ))}
       
       {currentWord && (
-        <span className={`current-word ${isError ? 'error-word' : ''}`}>
-          {isCorrect ? (
-            <>
-              <span className="current-word-typed">{userInput}</span>
-              <span className="current-word-untyped">{currentWord.slice(userInput.length)}</span>
-            </>
-          ) : (
-            <span>{currentWord}</span>
+        <span className={`current-word ${isError ? 'error-word-container' : ''}`}>
+          {currentWord.split('').map((char, i) => {
+            let className = "current-word-untyped";
+            if (i < userInput.length) {
+              className = char === userInput[i] ? "current-word-typed" : "current-word-error";
+            }
+            return <span key={i} className={className}>{char}</span>;
+          })}
+          {userInput.length > currentWord.length && (
+            <span className="current-word-error extra-chars">
+              {userInput.slice(currentWord.length)}
+            </span>
           )}
         </span>
       )}

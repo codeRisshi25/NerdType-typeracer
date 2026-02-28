@@ -38,7 +38,7 @@ const ScoreBoard = ({ players }) => {
         </tbody>
       </table>
       <div className="play-again-wrap">
-        <button className="play-again-btn" onClick={() => navigate('/')}>
+        <button className="play-again-btn" onClick={() => window.location.assign('/')}>
           play again
         </button>
       </div>

@@ -15,13 +15,10 @@ const Form = ({ isOpen, isOver, gameID, userInput, setUserInput }) => {
     const value = e.target.value;
     const lastChar = value.charAt(value.length - 1);
     
-    // Transmit word when space is pressed
     if (lastChar === ' ') {
       socket.emit('userInput', { userInput, gameID });
       setUserInput('');
-    } 
-    // Allow empty string (backspacing all the way) or valid characters
-    else if (value === '' || /^[a-zA-Z']$/.test(lastChar)) {
+    } else {
       setUserInput(value);
     }
   };

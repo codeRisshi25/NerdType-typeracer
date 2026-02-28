@@ -38,11 +38,16 @@
   color: var(--text-sub);
 }
 
-.current-word.error-word {
+.current-word-error {
   color: #ff5c5c;
 }
 
-.current-word.error-word::after {
+.extra-chars {
+  color: #ff5c5c;
+  opacity: 0.8;
+}
+
+.current-word.error-word-container::after {
   background-color: #ff5c5c;
 }
 
