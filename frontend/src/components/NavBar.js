@@ -8,7 +8,22 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <span className="nav-logo" onClick={() => navigate('/')}>nerdtype</span>
+      <div className="nav-brand" onClick={() => navigate('/')}>
+        <div className="brand-icon"></div>
+        <span className="brand-text">nerd<span className="brand-accent">type</span></span>
+      </div>
+
+      <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        <li><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); setMenuOpen(false); }}>home</a></li>
+        <li><a href="/leaderboard" onClick={(e) => { e.preventDefault(); setMenuOpen(false); }}>leaderboard</a></li>
+        <li><a href="https://risshi.is-a.dev" target="_blank" rel="noopener noreferrer">about</a></li>
+      </ul>
+
+      <div className="nav-auth">
+        <button className="auth-btn login">login</button>
+        <button className="auth-btn signup">sign up</button>
+      </div>
+
       <button
         className={`menu-toggle ${menuOpen ? 'active' : ''}`}
         onClick={() => setMenuOpen(!menuOpen)}
@@ -18,11 +33,6 @@ const NavBar = () => {
         <span className="bar" />
         <span className="bar" />
       </button>
-      <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <li><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); setMenuOpen(false); }}>home</a></li>
-        <li><a href="https://risshi.is-a.dev" target="_blank" rel="noopener noreferrer">about</a></li>
-        <li><a href="https://github.com/codeRisshi25" target="_blank" rel="noopener noreferrer">github</a></li>
-      </ul>
     </nav>
   );
 };

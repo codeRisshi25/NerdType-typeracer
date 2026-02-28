@@ -15,7 +15,7 @@ const StartBtn = ({ player, gameID }) => {
   return (
     <div className="startBtn-wrapper">
       <button className="startBtn" onClick={onClickHandler} aria-label="Start game">
-        start game
+        START GAME
       </button>
     </div>
   );

@@ -1,24 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --bg:        #1a1a2e;
-  --bg-2:      #16213e;
-  --surface:   #0f3460;
-  --card:      rgba(255,255,255,0.04);
-  --border:    rgba(255,255,255,0.08);
-  --accent:    #e2b714;
-  --accent-2:  #c9a112;
-  --green:     #4caf50;
-  --red:       #ca4754;
-  --text:      #d1d0c5;
-  --text-sub:  #646669;
-  --text-dim:  #3c3d3f;
+  --bg:        #12131c;
+  --bg-2:      #1c1e29;
+  --surface:   #171923;
+  --card:      rgba(255, 255, 255, 0.02);
+  --border:    rgba(255, 255, 255, 0.05);
+  --accent:    #ffd500;
+  --accent-2:  #e6c000;
+  --accent-cyan: #0bd8d8;
+  --accent-purple: #9048e0;
+  --green:     #0bd8d8; /* Swapped green for cyan for correct highlight */
+  --red:       #e02446;
+  --text:      #ffffff;
+  --text-sub:  #8b94a3;
+  --text-dim:  #3b3f4c;
   --white:     #ffffff;
   --mono:      'JetBrains Mono', monospace;
   --sans:      'Inter', sans-serif;
   --radius:    8px;
   --radius-lg: 16px;
-  --transition: 0.2s ease;
+  --transition: 0.2s ease-out;
 }
 
 *, *::before, *::after {

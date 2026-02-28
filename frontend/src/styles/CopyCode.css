@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--card);
-  border: 1px solid var(--border);
+  justify-content: center;
+  background: var(--bg-2);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: 3rem;
+  margin: 3rem auto;
+  max-width: 600px;
+  width: 100%;
   animation: slideDown 0.4s ease;
 }
 
@@ -17,38 +19,42 @@
 
 .copy-label {
   font-family: var(--mono);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-sub);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .copy-section {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: rgba(0,0,0,0.2);
-  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  background: #0d0f14;
+  padding: 0.5rem;
   border-radius: var(--radius);
   border: 1px solid var(--border);
 }
 
 .copy-id {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--accent);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  padding-left: 1rem;
+  font-weight: 600;
 }
 
 .copy-btn {
   background: var(--surface);
-  color: var(--text);
-  border: none;
-  padding: 0.5rem 1rem;
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1.25rem;
   border-radius: 4px;
-  font-size: 0.85rem;
-  transition: background var(--transition);
+  font-size: 0.75rem;
+  transition: all var(--transition);
 }
 
 .copy-btn:hover {
-  background: var(--accent);
-  color: var(--bg);
+  color: var(--white);
+  border-color: var(--text-sub);
 }

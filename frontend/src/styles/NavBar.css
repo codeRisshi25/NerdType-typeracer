@@ -3,37 +3,88 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
 }
 
-.nav-logo {
-  font-family: var(--mono);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: -0.5px;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
-  transition: opacity var(--transition);
 }
 
-.nav-logo:hover {
-  opacity: 0.8;
+.brand-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+.brand-text {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.brand-accent {
+  color: var(--accent);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
 }
 
 .nav-links a {
-  font-family: var(--mono);
-  font-size: 0.9rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.75rem;
   color: var(--text-sub);
   transition: color var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .nav-links a:hover {
-  color: var(--text);
+  color: var(--white);
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.auth-btn {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  background: transparent;
+  border: none;
+  transition: all var(--transition);
+}
+
+.auth-btn.login {
+  color: var(--text-sub);
+}
+
+.auth-btn.login:hover {
+  color: var(--white);
+}
+
+.auth-btn.signup {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+}
+
+.auth-btn.signup:hover {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 .menu-toggle {
@@ -53,30 +104,11 @@
   transition: all 0.25s ease;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .nav-links, .nav-auth {
+    display: none;
+  }
   .menu-toggle {
     display: flex;
   }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 2rem;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.5rem;
-    flex-direction: column;
-    gap: 1.25rem;
-    z-index: 50;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-  .menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 }

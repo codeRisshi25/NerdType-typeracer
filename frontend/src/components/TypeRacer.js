@@ -38,7 +38,7 @@ const TypeRacer = ({ gameState }) => {
           <StartBtn player={player} gameID={_id} />
 
           <div className="typing-section">
-            <DisplayWords words={words} player={player} userInput={userInput} />
+            <DisplayWords words={words} player={player} players={players} userInput={userInput} />
             <Form isOpen={isOpen} isOver={isOver} gameID={_id} userInput={userInput} setUserInput={setUserInput} />
           </div>
 

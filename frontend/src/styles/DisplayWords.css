@@ -1,62 +1,114 @@
 .words-display {
   font-family: var(--mono);
-  font-size: 1.8rem;
-  line-height: 1.6;
-  color: var(--text-sub);
+  font-size: 1.6rem;
+  line-height: 2.5; /* Large line height to give room for the floating tags */
+  color: var(--text-dim);
   padding: 1rem 0;
   user-select: none;
   min-height: 120px;
 }
 
+.word-wrapper {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+}
+
+/* Floating opponent tags */
+.opponent-tag {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  font-size: 0.65rem;
+  font-family: var(--mono);
+  color: var(--accent-cyan);
+  white-space: nowrap;
+  opacity: 0.8;
+  animation: floatUp 0.3s ease;
+}
+
+.opponent-tag:nth-child(2) {
+  top: -38px;
+  color: var(--accent-purple);
+}
+
+.opponent-tag:nth-child(3) {
+  top: -52px;
+  color: var(--accent);
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 0.8; transform: translateY(0); }
+}
+
 .typed-text {
-  color: var(--text);
+  color: var(--text-sub);
 }
 
 .current-word {
-  position: relative;
-  display: inline-block;
-  white-space: pre-wrap;
-}
-
-.current-word::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  height: 2px;
-  background-color: var(--accent);
-  border-radius: 2px;
-  transition: background-color 0.2s ease;
+  /* Removed the underline, focus is on text color and cursor now */
 }
 
 .current-word-typed {
-  color: var(--text);
+  color: var(--white);
 }
 
 .current-word-untyped {
-  color: var(--text-sub);
+  color: var(--text-dim);
 }
 
+/* Red block error styling (Cyber theme) */
 .current-word-error {
-  color: #ff5c5c;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 2px;
 }
 
 .extra-chars {
-  color: #ff5c5c;
-  opacity: 0.8;
+  background-color: var(--red);
+  color: var(--white);
+  opacity: 0.9;
+  border-radius: 2px;
 }
 
-.current-word.error-word-container::after {
-  background-color: #ff5c5c;
+.current-word.error-word-container {
+  /* Container visual feedback if the whole word is wrong */
 }
 
 .remaining-text {
-  color: var(--text-sub);
+  color: var(--text-dim);
+}
+
+/* The vertical blinking cursor */
+.cursor-active {
+  position: relative;
+}
+
+.cursor-active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 10%;
+  height: 80%;
+  width: 2px;
+  background-color: var(--accent);
+  animation: blink 1s step-end infinite;
+  z-index: 2;
+}
+
+.end-cursor::before {
+  left: 0; /* Position at the very end of the word */
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 @media (max-width: 768px) {
   .words-display {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+    line-height: 2;
   }
 }
