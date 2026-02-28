@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountDown from './CountDown';
 import StartBtn from './StartBtn';
@@ -20,6 +20,7 @@ const TypeRacer = ({ gameState }) => {
   const navigate = useNavigate();
   const { _id, players, words, isOpen, isOver } = gameState;
   const player = findPlayer(players);
+  const [userInput, setUserInput] = useState('');
 
   useEffect(() => {
     if (_id === '') {
@@ -37,8 +38,8 @@ const TypeRacer = ({ gameState }) => {
           <StartBtn player={player} gameID={_id} />
 
           <div className="typing-section">
-            <DisplayWords words={words} player={player} />
-            <Form isOpen={isOpen} isOver={isOver} gameID={_id} />
+            <DisplayWords words={words} player={player} userInput={userInput} />
+            <Form isOpen={isOpen} isOver={isOver} gameID={_id} userInput={userInput} setUserInput={setUserInput} />
           </div>
 
           <ProgressBar players={players} player={player} wordsLength={words?.length} />

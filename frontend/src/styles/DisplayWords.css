@@ -13,8 +13,9 @@
 }
 
 .current-word {
-  color: var(--accent);
   position: relative;
+  display: inline-block;
+  white-space: pre-wrap;
 }
 
 .current-word::after {
@@ -26,6 +27,23 @@
   height: 2px;
   background-color: var(--accent);
   border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.current-word-typed {
+  color: var(--text);
+}
+
+.current-word-untyped {
+  color: var(--text-sub);
+}
+
+.current-word.error-word {
+  color: #ff5c5c;
+}
+
+.current-word.error-word::after {
+  background-color: #ff5c5c;
 }
 
 .remaining-text {
