@@ -40,13 +40,11 @@
 }
 
 .nav-links a {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
   color: var(--text-sub);
   transition: color var(--transition);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-transform: lowercase;
 }
 
 .nav-links a:hover {

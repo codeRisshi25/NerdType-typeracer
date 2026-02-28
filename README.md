@@ -1,32 +1,19 @@
-# NerdType | Multiplayer Typeracer
+# TypeRacer Project
 
 <img width="1912" height="968" alt="image" src="https://github.com/user-attachments/assets/3c9bc7c6-8acd-4303-bd9a-362872bf1b65" />
 
-
-NerdType is a real-time multiplayer typing race game built with the **MERN** stack and **Socket.io**. It features a modern, clean, dark-terminal aesthetic inspired by Monkeytype.
+NerdType is a real-time multiplayer typing race game built with the **MERN** stack and **Socket.io**. It features a modern, clean, dark-terminal aesthetic inspired by Monkeytype. Players can create rooms, invite others by sharing codes, and compete to see who can type the fastest.
 
 ## Features
-- Real-time multiplayer racing against friends with instant WPM syncing
-- Dynamic visual feedback (glowing text, glassmorphism cards, CSS gradient background)
-- Accurate WPM calculation and leaderboards per match
-- Mobile-responsive layout
 
-## Stack
-- **Frontend:** React, React Router, CSS Variables (Custom dark theme)
-- **Backend:** Node.js, Express, Socket.io
-- **Database:** MongoDB
+- Create and join multiplayer typing games
+- Real-time progress tracking
+- Shareable game codes
+- WPM (Words Per Minute) calculation
+- Countdown timer and game clock
+- Leaderboard displaying final results
 
-## How to Run Locally
-
-### 1. Using Docker Compose (Recommended)
-You can run the entire stack (Database, Backend API, Frontend React app) using a single command:
-```bash
-docker-compose up --build
-```
-The app will be available at `http://localhost:3000`.
-
-### 2. Manual Setup
-Make sure you have MongoDB running locally or on a cloud provider.
+## Local Setup
 
 **Backend Setup:**
 ```bash
@@ -45,3 +32,7 @@ npm start
 
 ## Credits
 UI/UX overhauled with a modern dark terminal aesthetic, using JetBrains Mono and Inter fonts.
+
+## License
+
+This project is licensed under the ISC License. Contributions are welcome! Please feel free to submit a Pull Request.

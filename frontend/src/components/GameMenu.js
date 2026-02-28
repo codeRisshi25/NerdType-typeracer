@@ -82,17 +82,23 @@ const GameMenu = () => {
             
             <div className="features-grid">
               <div className="feat-card">
-                <div className="feat-icon-box">👥</div>
+                <div className="feat-icon-box">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
                 <h3 className="feat-title">Real-time Multiplayer</h3>
                 <p className="feat-desc">Race against friends or random opponents with zero latency. Create private rooms and customize the rules for the ultimate face off.</p>
               </div>
               <div className="feat-card">
-                <div className="feat-icon-box">📊</div>
+                <div className="feat-icon-box">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
                 <h3 className="feat-title">Detailed Analytics</h3>
                 <p className="feat-desc">Visualize your progress. Track your WPM trends, accuracy heatmaps, and identify weak keys to improve precisely where it matters.</p>
               </div>
               <div className="feat-card">
-                <div className="feat-icon-box">🎨</div>
+                <div className="feat-icon-box">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                </div>
                 <h3 className="feat-title">Custom Themes</h3>
                 <p className="feat-desc">Make it yours. Customize your typing interface with modern, distraction-free themes and font pairings to match your setup.</p>
               </div>
